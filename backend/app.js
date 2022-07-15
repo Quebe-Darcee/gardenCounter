@@ -3,24 +3,31 @@ const express = require('express');
 const app = express();
 
 app.use((req, res, next) => {
-  console.log('first middleware');
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('GET request to the homepage');
+app.use(express.json());
+
+app.get('/plants', (req, res) => {
+  res.json('GET all plants');
 });
 
-app.post('/', (req, res) => {
-  res.send('POST request to the homepage');
+app.get('/plants/:id', (req, res) => {
+  res.json(`GET plant ${req.params.id}`)
 });
 
-app.put('/', (req, res) => {
-  res.send('PUT request to the homepage');
+app.post('/plants', (req, res) => {
+  console.log(req.body);
+  res.json('Create a new plant record');
 });
 
-app.delete('/', (req, res) => {
-  res.send('DELETE request to the homepage');
+app.put('/plants/:id', (req, res) => {
+  console.log(req.body);
+  res.json(`Update plant ${req.params.id}`);
+});
+
+app.delete('/plants/:id', (req, res) => {
+  res.json(`DELETE plant ${req.params.id}`);
 });
 
 module.exports = app;
