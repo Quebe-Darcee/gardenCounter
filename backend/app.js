@@ -28,6 +28,7 @@ app.post('/plants', async (req, res, next) => {
   const plant = await new Plant({
     id: 4,
     name: req.body.name,
+    description: req.body.description,
     amount: req.body.amount
   });
 
@@ -41,6 +42,7 @@ app.post('/plants', async (req, res, next) => {
 app.put('/plants/:id', async (req, res, next) => {
   const plant = await Plant.findOne({ id: req.params.id }).exec();
   plant.name = req.body.name;
+  description: req.body.description;
   plant.amount = req.body.amount;
 
   const result = await Plant.updateOne({ id: req.params.id }, plant).exec();
