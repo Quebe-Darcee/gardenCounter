@@ -2,17 +2,22 @@
 
 echo "Run tests"
 
+echo "GET"
 curl -X GET localhost:3000/plants
-echo ""
+echo ""; echo "";
 
+echo "GET 1"
 curl -X GET localhost:3000/plants/1
-echo ""
+echo ""; echo "";
 
-curl -X POST localhost:3000/plants  -H 'Content-Type: application/json' -d '{"name":"zucchini"}'
-echo ""
+echo "CREATE"
+curl -X POST localhost:3000/plants  -H 'Content-Type: application/json' -d '{"name":"onions", "amount":"10"}'
+echo ""; echo "";
 
-curl -X PUT localhost:3000/plants/1  -H 'Content-Type: application/json' -d '{"name":"zucchini"}'
-echo ""
+echo "PUT"
+curl -X PUT localhost:3000/plants/1  -H 'Content-Type: application/json' -d '{"name":"zucchini", "amount":"45"}'
+echo ""; echo "";
 
-curl -X DELETE localhost:3000/plants/1
-echo ""
+echo "DELETE"
+curl -X DELETE localhost:3000/plants/3
+echo ""; echo "";
