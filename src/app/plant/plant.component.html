@@ -1,8 +1,6 @@
 <div class="container pull-left">
   <div class="row">
     <div class="col-md-3">
-      Plant: {{ plant | json }} <br>
-      {{ plants | json }}
       <h3>Our Plants</h3>
       <div *ngFor="let plant of plants" [plant]="plant">
         <span class="plant-detail">{{ plant.name | uppercase }} : {{ plant.amount }}</span>
@@ -11,23 +9,6 @@
         <button class="btn" (click)="delete(plant)"><span class="material-symbols-outlined">close</span></button>
         <br>
         {{ plant.description }}
-      </div>
-      <div class="new-plant">
-        <h3>Add New Plant</h3>
-        <form (ngSubmit)="onSubmit()" id="form">
-          <div class="col-sm-12">
-            <input type="text" placeholder="Plant name" name="name" [(ngModel)]="plant.name">
-          </div>
-          <div class="col-sm-12">
-            <input type="text" placeholder="Description" name="description" [(ngModel)]="plant.description">
-          </div>
-          <div class="col-sm-12">
-            <input type="text" placeholder="Amount" name="amount" [(ngModel)]="plant.amount">
-          </div>
-          <div class="col-sm-12">
-            <button class="submit" type="submit">Submit</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>

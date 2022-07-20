@@ -21,17 +21,6 @@ export class PlantComponent implements OnInit {
     this.plants = await this.plantService.getAll();
   }
 
-  async onSubmit() {
-    try {
-      this.plantService.create(this.plant);
-      this.errors = {};
-      this.plants.push({...this.plant});
-    } catch (error) {
-      console.log('in the future show errors on form');
-      console.log(error);
-    }
-  }
-
   async addOne(plant: any) {
     this.plantService.update({
       name: plant.name,
