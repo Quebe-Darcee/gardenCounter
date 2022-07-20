@@ -1,12 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const Plant = require('./models/plant');
 
-app.use((req, res, next) => {
-  next();
-});
-
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/plants', async (req, res, next) => {
   const plants = await Plant.find();
@@ -16,8 +15,8 @@ app.get('/plants', async (req, res, next) => {
   });
 });
 
-app.get('/plants/:id', async (req, res, next) => {
-  const plant = await Plant.findOne({ id: req.params.id });
+app.get('/plants/:name', async (req, res, next) => {
+  const plant = await Plant.findOne({ name: req.params.name });
   res.status(200).json({
       message: "Plant fetched successfully!",
       plant: plant
@@ -39,22 +38,22 @@ app.post('/plants', async (req, res, next) => {
   });
 });
 
-app.put('/plants/:id', async (req, res, next) => {
-  const plant = await Plant.findOne({ id: req.params.id }).exec();
+app.put('/plants/:name', async (req, res, next) => {
+  const plant = await Plant.findOne({ name: req.params.name }).exec();
   plant.name = req.body.name;
-  description: req.body.description;
+  plant.description = req.body.description;
   plant.amount = req.body.amount;
 
-  const result = await Plant.updateOne({ id: req.params.id }, plant).exec();
+  const result = await Plant.updateOne({ name: req.params.name }, plant).exec();
   res.json({
     message: 'Plant updated successfully',
     plant: result
   });
 });
 
-app.delete('/plants/:id', async (req, res, next) => {
-  const plant = await Plant.findOne({ id: req.params.id }).exec();
-  const deletedPlant = await plant.deleteOne({ id: req.params.id })
+app.delete('/plants/:name', async (req, res, next) => {
+  const plant = await Plant.findOne({ name: req.params.name }).exec();
+  const deletedPlant = await plant.deleteOne({ name: req.params.name })
   res.json({
     message: 'Plant deleted successfully'
   });
