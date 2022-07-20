@@ -40,8 +40,7 @@ app.post('/plants', async (req, res, next) => {
 
 app.put('/plants/:name', async (req, res, next) => {
   const plant = await Plant.findOne({ name: req.params.name }).exec();
-  plant.name = req.body.name;
-  plant.description = req.body.description;
+  // plant.description = req.body.description;
   plant.amount = req.body.amount;
 
   const result = await Plant.updateOne({ name: req.params.name }, plant).exec();
