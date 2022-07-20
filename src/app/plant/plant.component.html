@@ -1,14 +1,17 @@
 <div class="container pull-left">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h3>Our Plants</h3>
       <div *ngFor="let plant of plants" [plant]="plant">
         <span class="plant-detail">{{ plant.name | uppercase }} : {{ plant.amount }}</span>
-        <button class="btn" (click)="addOne(plant)"><span class="material-symbols-outlined">add</span></button>
-        <button class="btn" (click)="minusOne(plant)"><span class="material-symbols-outlined">remove</span></button>
-        <button class="btn" (click)="delete(plant)"><span class="material-symbols-outlined">close</span></button>
+        <div style="float: right;">
+          <button class="btn" (click)="addOne(plant)"><span class="material-symbols-outlined">add</span></button>
+          <button class="btn" (click)="minusOne(plant)"><span class="material-symbols-outlined">remove</span></button>
+          <button class="btn" (click)="delete(plant)"><span class="material-symbols-outlined">close</span></button>
+        </div>
         <br>
-        {{ plant.description }}
+        <span class="plant-description">{{ plant.description }}</span>
+        <hr>
       </div>
     </div>
   </div>

@@ -18,6 +18,7 @@ import { PlantAddComponent } from './plant/plant-add/plant-add.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {path: '', redirectTo: '/plants', pathMatch: 'full'},
       {path: 'plants', component: PlantComponent},
       {path: 'add', component: PlantAddComponent}
     ]),

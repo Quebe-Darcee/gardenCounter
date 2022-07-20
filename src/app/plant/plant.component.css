@@ -1,3 +1,14 @@
-
 .plant-detail {
+  font-weight: bold;
+}
+
+.plant-description {
+  font-size: 12px;
+}
+
+.btn {
+    background: #ee0979;
+    margin: 5px;
+    padding: 0px;
+    line-height: 0;
 }
